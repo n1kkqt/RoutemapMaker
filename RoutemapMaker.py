@@ -10,7 +10,7 @@ from os import listdir
 from os.path import isfile, join
 from openpyxl.styles import Border, Side
 
-##########################################
+
 def replace_trash(strin):
     with io.open('strfile.txt', mode="w", encoding="utf_8_sig", ) as fd: 
         fd.write(strin)
@@ -18,18 +18,18 @@ def replace_trash(strin):
         strin = fd.read() 
     os.remove('strfile.txt')
     return strin
-##########################################
+
 def getText(filename):
     doc = docx.Document(filename)
     fullText = []
     for para in doc.paragraphs:
         fullText.append(para.text)
     return '\n'.join(fullText)
-##########################################
+
 def f1(slist):
     slist = [s and s.strip() for s in slist]
     return list(filter(None, slist))
-##########################################
+
 def getData(filename):
     if filename[-4:-1]=='doc':
         partext=getText(filename).split("\n")
@@ -45,7 +45,7 @@ def getData(filename):
         data[i]=data[i].split('  ')
         data[i]=list(filter(None,data[i]))
     return data       
-##########################################
+
 class Window(QWidget):
 
     def __init__(self):
@@ -122,7 +122,7 @@ class Window(QWidget):
         self.setGeometry(400, 400, 355, 270)
         self.setWindowTitle('RoutemapMaker by Nikita Lokhmachev')
         self.show()
-##########################################
+
     def go(self):
         xlsxtval=self.xlsxt.text()
         openpathval=self.openpath.text()
@@ -208,7 +208,7 @@ class Window(QWidget):
                                               bottom = Side(border_style='thin', color='FF000000'),
                                               left = Side(border_style='thin', color='FF000000'))
             routemap.save(newfullname)
-##########################################   
+
     def closeapp(self):
         sys.exit()
 
